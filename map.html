@@ -16,9 +16,14 @@ body{height:100%;margin:0px;padding:0px}
 <body> 
 <div id="container"></div>
 <script type="text/javascript">
+
 var isHideInfo=true;  //隐藏，不显示
 //var isHideInfo=false;
 
+var showGreen=getQueryVariable("gu");
+if(showGreen=="dang"){
+	isHideInfo=false;
+}
 
 var map = new BMapGL.Map("container");
 // 创建地图实例 
@@ -311,7 +316,7 @@ add(215,120.121846,30.281800);
 add(214,120.121880,30.281800);
 
 add(227,120.121890,30.281977);
-add(226,120.121890,30.281917);
+add3(226,120.121890,30.281917);
 add(225,120.121890,30.281877);
 add(224,120.121890,30.281827);
 
@@ -1017,7 +1022,17 @@ function add3(code,x,y){
 	map.addOverlay(label);                        // 将标注添加到地图中
 }
 
-
+//获取url参数
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
 </script> 
 </body> 
 </html>
